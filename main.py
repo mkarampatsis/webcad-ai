@@ -1,9 +1,15 @@
 from flask import Flask
 from flask import request
 from flask import jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
 
+# CORS configuration
+cors = CORS(
+  app,
+  resources={r"*": {"origins": ["http://localhost:4200"]}},
+)
 
 @app.post("/agent")
 def agent():
