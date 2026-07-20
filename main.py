@@ -1,6 +1,4 @@
-from flask import Flask
-from flask import request
-from flask import jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -83,15 +81,14 @@ def agent():
     )
 
 
-@agent.route("/execute", methods=["POST"])
+@app.route("/execute", methods=["POST"])
 def execute():
 
+    print("aaaaaaa")
     request_json = request.get_json()
-
     prompt = request_json["prompt"]
 
     print(prompt)
-
     return jsonify(
         {
             "operations": [
